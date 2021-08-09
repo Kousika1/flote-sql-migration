@@ -1,0 +1,26 @@
+{
+    "name": "flote-migration",
+    "version": "0.0.1",
+    "description": "Data Migration in Flote",
+    "license": "MIT",
+    "scripts": {
+        "migration:data": "ts-node src/migration/migration.ts"
+    },
+    "devDependencies": {
+        "@types/dotenv": "^6.1.1",
+        "@types/mysql": "^2.15.19",
+        "@types/node": "^12.20.4",
+        "ts-loader": "^6.2.0",
+        "ts-node": "^8.4.1",
+        "tsconfig-paths": "^3.9.0"
+    },
+    "dependencies": {
+        "async": "^3.2.1",
+        "dotenv": "^10.0.0",
+        "mysql": "^2.18.1",
+        "node-querybuilder": "^2.1.1",
+        "pg": "^8.7.1",
+        "typeorm": "^0.2.36",
+        "typescript": "^4.3.5"
+    }
+}
