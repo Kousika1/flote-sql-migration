@@ -1,0 +1,7 @@
+# dotenv environment variables file
+.env
+
+# node_modules
+node_modules
+
+package-lock.json
