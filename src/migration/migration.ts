@@ -180,7 +180,7 @@ function insertData(repository, table) {
     const result = await pgConnection.query(
       "SELECT * FROM " +
         table +
-        " order by created_at limit 500000 offset 1500000"
+        " order by created_at limit 5000 offset 15000"
     );
     console.log(result.length);
     async.mapSeries(
@@ -216,9 +216,10 @@ async function migrateDataTables() {
       password: process.env["MYSQL_PASSWORD"],
       database: process.env["MYSQL_DATABASE"],
       entities: [...entities],
-      connectTimeout: 400000,
+      // connectTimeout: 400000,
+      synchronize: false,
       extra: {
-        connectionLimit: 3000000,
+        // connectionLimit: 3000000,
         // utf8mb4_unicode_ci charset is important for storing emojis
         charset: "utf8mb4_unicode_ci",
       },
