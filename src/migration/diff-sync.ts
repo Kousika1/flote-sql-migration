@@ -177,10 +177,10 @@ function insertData(repository, table) {
     console.log("TABLE:", table)
     console.log("Start time:", getTime())
 
-    const result = await pgConnection.query(
-      "SELECT * FROM " + table + " order by created_at limit 5000 offset 15000"
-    )
-    console.log(result.length)
+    const mysqlData = await getConnection("default").query("SELECT id FROM " + table)
+    console.log('Mysql data length--->', mysqlData.length)
+    const result = await pgConnection.query(`SELECT * FROM ${table} WHERE id NOT IN (${mysqlData.join(', ')})`)
+    console.log('Difference length--->', result.length)
     async.mapSeries(
       result,
       async (data, callback) => {
