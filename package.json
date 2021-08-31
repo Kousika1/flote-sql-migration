@@ -4,7 +4,8 @@
     "description": "Data Migration in Flote",
     "license": "MIT",
     "scripts": {
-        "migration:data": "ts-node src/migration/migration.ts"
+        "migration:data": "ts-node src/migration/migration.ts",
+        "migration:diff": "ts-node src/migration/diff-sync.ts"
     },
     "devDependencies": {
         "@types/dotenv": "^6.1.1",

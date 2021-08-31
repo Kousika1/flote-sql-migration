@@ -179,7 +179,7 @@ function insertData(repository, table) {
 
     const mysqlData = await getConnection("default").query("SELECT id FROM " + table)
     console.log('Mysql data length--->', mysqlData.length)
-    const result = await pgConnection.query(`SELECT * FROM ${table} WHERE id NOT IN (${mysqlData.join(', ')})`)
+    const result = await pgConnection.query(`SELECT * FROM ${table} WHERE id NOT IN (${mysqlData.map(i => i.id).join(', ')})`)
     console.log('Difference length--->', result.length)
     async.mapSeries(
       result,
