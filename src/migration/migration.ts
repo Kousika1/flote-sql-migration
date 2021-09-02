@@ -81,6 +81,7 @@ import { WyreTransactions } from "../entities/WyreTransactions"
 import { createConnections, getConnection } from "typeorm"
 import "dotenv/config"
 import * as async from "async"
+import * as keys from '../utils/entityKeys'
 
 const entities = [
   AdCampaigns,
@@ -178,7 +179,7 @@ function insertData(repository, table) {
     console.log("Start time:", getTime())
 
     const result = await pgConnection.query(
-      "SELECT * FROM " + table + " order by created_at limit 5000 offset 15000"
+      `SELECT ${keys[repository]} FROM ${table} order by created_at limit 5000 offset 15000`
     )
     console.log(result.length)
     async.mapSeries(

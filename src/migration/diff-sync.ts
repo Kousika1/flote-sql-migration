@@ -81,6 +81,7 @@ import { WyreTransactions } from "../entities/WyreTransactions"
 import { createConnections, getConnection } from "typeorm"
 import "dotenv/config"
 import * as async from "async"
+import * as keys from '../utils/entityKeys'
 
 const entities = [
   AdCampaigns,
@@ -179,7 +180,7 @@ function insertData(repository, table) {
 
     const mysqlData = await getConnection("default").query("SELECT id FROM " + table)
     console.log('Mysql data length--->', mysqlData.length)
-    const result = await pgConnection.query(`SELECT * FROM ${table} WHERE id NOT IN (${mysqlData.map(i => i.id).join(', ')})`)
+    const result = await pgConnection.query(`SELECT ${keys[repository]} FROM ${table} WHERE id NOT IN (${mysqlData.map(i => i.id).join(', ')})`)
     console.log('Difference length--->', result.length)
     async.mapSeries(
       result,
