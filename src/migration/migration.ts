@@ -172,16 +172,16 @@ function getTime() {
   return `${today.getHours()}:${today.getMinutes()}:${today.getSeconds()}:${today.getMilliseconds()}`
 }
 
-function insertData(repository, table) {
+function insertData(repository, name, table) {
   return new Promise(async (resolve, reject) => {
     console.log("=================================")
     console.log("TABLE:", table)
     console.log("Start time:", getTime())
 
     const result = await pgConnection.query(
-      `SELECT ${keys[repository]} FROM ${table} order by created_at limit 5000 offset 15000`
+      `SELECT ${keys[name]} FROM ${table}`
     )
-    console.log(result.length)
+    console.log(result.length);
     async.mapSeries(
       result,
       async (data, callback) => {
@@ -248,108 +248,110 @@ async function migrateDataTables() {
 
   pgConnection = getConnection("pg-connection")
 
-  /**
+   /**
    *          DATA SET - 1
    */
-  await insertData(Adds, 'adds')
-  await insertData(BitcoinAddressBackups, 'bitcoin_address_backups')
-  await insertData(BitcoinPurchases, 'bitcoin_purchases')
-  await insertData(BitcoinWallets, 'bitcoin_wallets')
-  await insertData(Boards, 'boards')
-  await insertData(Channels, 'channels')
-  await insertData(DeliveryAddresses, 'delivery_addresses')
-  await insertData(Events, 'events')
-  await insertData(Files, 'files')
-  await insertData(Invoices, 'invoices')
-  await insertData(IrrelevantWords, 'irrelevant_words')
-  await insertData(MessageUploads, 'message_uploads')
-  await insertData(PostBoosts, 'post_boosts')
-  await insertData(ProductInventories, 'product_inventories')
-  await insertData(Reports, 'reports')
-  await insertData(Rulings, 'rulings')
-  await insertData(SenderKeys, 'sender_keys')
-  await insertData(TokenCredits, 'token_credits')
-  await insertData(WyreTransactions, 'wyre_transactions')
-
-  /**
-   *          DATA SET - 2
-   */
-  await insertData(AdCredits, 'ad_credits')
-  await insertData(Ads, 'ads')
-  await insertData(FacebookImports, 'facebook_imports')
-  await insertData(MediaThumbnails, 'media_thumbnails')
-  await insertData(AverageTransactionFees, 'average_transaction_fees')
-  await insertData(ListBlocks, 'list_blocks')
-  await insertData(Votes, 'votes')
-  await insertData(ProductUploads, 'product_uploads')
-  await insertData(AdPlacements, 'ad_placements')
-  await insertData(ArInternalMetadata, 'ar_internal_metadata')
-  await insertData(Comments, 'comments')
-  await insertData(Filters, 'filters')
-  await insertData(HiddenHashtags, 'hidden_hashtags')
-  await insertData(Invites, 'invites')
-  await insertData(ShippingRates, 'shipping_rates')
-  await insertData(ListSubscriptions, 'list_subscriptions')
-  await insertData(Payments, 'payments')
-  await insertData(AdCampaigns, 'ad_campaigns')
-  await insertData(AdClicks, 'ad_clicks')
-  await insertData(DeletedUserBackups, 'deleted_user_backups')
-  await insertData(Purchases, 'purchases')
-  await insertData(PaymentAddresses, 'payment_addresses')
-  await insertData(Products, 'products')
-  await insertData(OldSenderKeys, 'old_sender_keys')
-  await insertData(PurchaseOrderSupports, 'purchase_order_supports')
-  await insertData(SchemaMigrations, 'schema_migrations')
-
-  /**
-   *          DATA SET - 3
-   */
-  await insertData(Supports, 'supports')
-  await insertData(Lists, 'lists')
-  await insertData(ListMemberships, 'list_memberships')
-  await insertData(TransactionInputs, 'transaction_inputs')
-  await insertData(Blocks, 'blocks')
-  await insertData(UserLogs, 'user_logs')
-  await insertData(AuthenticatedAccounts, 'authenticated_accounts')
-  await insertData(TransactionOutputs, 'transaction_outputs')
-  await insertData(Tiers, 'tiers')
-  await insertData(SubscriptionRequests, 'subscription_requests')
-  await insertData(PurchaseOrders, 'purchase_orders')
-  await insertData(LivestreamViewers, 'livestream_viewers')
-  await insertData(Livestreams, 'livestreams')
-   await insertData(BitcoinAddresses, 'bitcoin_addresses')
-  await insertData(Transactions, 'transactions')
-  await insertData(Contacts, 'contacts')
-  await insertData(SupportPayments, 'support_payments')
-  await insertData(Reposts, 'reposts')
-  await insertData(Unfollows, 'unfollows')
-
-  /**
-  *          DATA SET - 4
-   */
-  await insertData(Views, 'views')
-  await insertData(UrlMetadata, 'url_metadata')
-  await insertData(ConversationUsers, 'conversation_users')
-  await insertData(PostUploads, "post_uploads")
-  await insertData(Conversations, 'conversations')
-  await insertData(Metrics, 'metrics')
-  await insertData(Users, 'users')
-
-  /**
-   *          DATA SET - 5
-   */
-  await insertData(Messages, 'messages')
-  await insertData(AdImpressions, 'ad_impressions')
-  await insertData(AdminAlerts, 'admin_alerts')
-  await insertData(Subscriptions, 'subscriptions')
-  await insertData(Likes, 'likes')
-  await insertData(Notifications, 'notifications')
-  await insertData(Uploads, 'uploads')
-
-  /**
-   *          DATA SET - 6
-   */
-  await insertData(Posts, "posts")
+  //  await insertData(Adds, 'Adds', 'adds')
+  //  await insertData(BitcoinAddressBackups, 'BitcoinAddressBackups', 'bitcoin_address_backups')
+  //  await insertData(BitcoinPurchases, 'BitcoinPurchases', 'bitcoin_purchases')
+  //  await insertData(BitcoinWallets, 'BitcoinWallets', 'bitcoin_wallets')
+  //  await insertData(Boards, 'Boards', 'boards')
+  //  await insertData(Channels, 'Channels', 'channels')
+  //  await insertData(DeliveryAddresses, 'DeliveryAddresses', 'delivery_addresses')
+  //  await insertData(Events, 'Events', 'events')
+  //  await insertData(Files, 'Files', 'files')
+  //  await insertData(Invoices, 'Invoices', 'invoices')
+  //  await insertData(IrrelevantWords, 'IrrelevantWords', 'irrelevant_words')
+  //  await insertData(MessageUploads, 'MessageUploads', 'message_uploads')
+  //  await insertData(PostBoosts, 'PostBoosts', 'post_boosts')
+  //  await insertData(ProductInventories, 'ProductInventories', 'product_inventories')
+  //  await insertData(Reports, 'Reports', 'reports')
+  //  await insertData(Rulings, 'Rulings', 'rulings')
+  //  await insertData(SenderKeys, 'SenderKeys', 'sender_keys')
+  //  await insertData(TokenCredits, 'TokenCredits', 'token_credits')
+  //  await insertData(WyreTransactions, 'WyreTransactions', 'wyre_transactions')
+ 
+   /**
+    *          DATA SET - 2
+    */
+    // await insertData(AdCredits, 'AdCredits', 'ad_credits')
+    //  await insertData(Ads, 'Ads', 'ads')
+    //  await insertData(FacebookImports, 'FacebookImports', 'facebook_imports')
+    //  await insertData(MediaThumbnails, 'MediaThumbnails', 'media_thumbnails')
+    //  await insertData(AverageTransactionFees, 'AverageTransactionFees', 'average_transaction_fees')
+    //  await insertData(ListBlocks, 'ListBlocks', 'list_blocks')
+    //  await insertData(Votes, 'Votes', 'votes')
+    //  await insertData(ProductUploads, 'ProductUploads', 'product_uploads')
+    //  await insertData(AdPlacements, 'AdPlacements', 'ad_placements')
+    //  await insertData(ArInternalMetadata, 'ArInternalMetadata', 'ar_internal_metadata')
+    //  await insertData(Comments, 'Comments', 'comments')
+    //  await insertData(Filters, 'Filters', 'filters')
+    //  await insertData(HiddenHashtags, 'HiddenHashtags', 'hidden_hashtags')
+    //  await insertData(Invites, 'Invites', 'invites')
+    //  await insertData(ShippingRates, 'ShippingRates', 'shipping_rates')
+    //  await insertData(ListSubscriptions, 'ListSubscriptions', 'list_subscriptions')
+    //  await insertData(Payments, 'Payments', 'payments')
+    //  await insertData(AdCampaigns, 'AdCampaigns', 'ad_campaigns')
+    //  await insertData(AdClicks, 'AdClicks', 'ad_clicks')
+    //  await insertData(DeletedUserBackups, 'DeletedUserBackups', 'deleted_user_backups')
+    //  await insertData(Purchases, 'Purchases', 'purchases')
+    //  await insertData(PaymentAddresses, 'PaymentAddresses', 'payment_addresses')
+    //  await insertData(Products, 'Products', 'products')
+    //  await insertData(OldSenderKeys, 'OldSenderKeys', 'old_sender_keys')
+    //  await insertData(PurchaseOrderSupports, 'PurchaseOrderSupports', 'purchase_order_supports')
+    //  await insertData(SchemaMigrations, 'SchemaMigrations', 'schema_migrations')
+  
+    // /**
+    //  *          DATA SET - 3
+    //  */
+    // await insertData(Supports, 'Supports', 'supports')
+    // await insertData(Lists, 'Lists', 'lists')
+    // await insertData(ListMemberships,'ListMemberships','list_memberships')
+    // await insertData(TransactionInputs,'TransactionInputs' ,'transaction_inputs')
+    // await insertData(Blocks, 'Blocks','blocks')
+    // await insertData(UserLogs, 'UserLogs','user_logs')
+    // await insertData(AuthenticatedAccounts,'AuthenticatedAccounts','authenticated_accounts')
+    // await insertData(TransactionOutputs,'TransactionOutputs' ,'transaction_outputs')
+    // await insertData(Tiers, 'Tiers','tiers')
+    // await insertData(SubscriptionRequests,'SubscriptionRequests', 'subscription_requests')
+    // await insertData(PurchaseOrders, 'PurchaseOrders','purchase_orders')
+    // await insertData(LivestreamViewers,'LivestreamViewers' ,'livestream_viewers')
+    
+    // await insertData(Livestreams,'Livestreams', 'livestreams')
+    // await insertData(BitcoinAddresses,'BitcoinAddresses', 'bitcoin_addresses')
+    // await insertData(Transactions,'Transactions' ,'transactions')
+    // await insertData(Contacts,'Contacts', 'contacts')
+    // await insertData(SupportPayments,'SupportPayments', 'support_payments')
+    // await insertData(Reposts, 'Reposts','reposts')
+    // await insertData(Unfollows,'Unfollows' ,'unfollows')
+  
+    // /**
+    // *          DATA SET - 4
+    //  */
+    await insertData(Views, 'Views','views')
+    await insertData(UrlMetadata,'UrlMetadata' ,'url_metadata')
+    await insertData(ConversationUsers,'ConversationUsers' ,'conversation_users')
+    await insertData(PostUploads, 'PostUploads',"post_uploads")
+    await insertData(Conversations,'Conversations', 'conversations')
+    await insertData(Metrics, 'Metrics','metrics')
+    await insertData(Users, 'Users','users')
+  
+    // /**
+    //  *          DATA SET - 5
+    //  */
+    // await insertData(Messages, 'Messages', 'messages')
+    // await insertData(AdImpressions,'AdImpressions', 'ad_impressions')
+    // await insertData(AdminAlerts, 'AdminAlerts','admin_alerts')
+    // await insertData(Subscriptions, 'Subscriptions','subscriptions')
+    // await insertData(Likes, 'Likes','likes')
+    // await insertData(Notifications, 'Notifications','notifications')
+    // await insertData(Uploads,'Uploads' ,'uploads')
+  
+    // /**
+    //  *          DATA SET - 6
+    //  */
+    // await insertData(Posts,'Posts', "posts")
+  
 
   console.log("Migration done successfully!")
 }

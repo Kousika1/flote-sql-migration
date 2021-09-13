@@ -284,7 +284,7 @@ export const Files = `
   url,
   created_at AS "createdAt",
   updated_at AS "updatedAt",
-  message
+  message_id AS "message"
 `
 
 export const Filters = `
@@ -663,7 +663,7 @@ export const Purchases = `
     id,
     product_id AS "productId",
     user_id AS "userId",
-    created_at, AS "createdAt",
+    created_at AS "createdAt",
     updated_at AS "updatedAt",
     uuid,
     purchase_order_id AS "purchaseOrderId",
@@ -709,7 +709,7 @@ export const SenderKeys = `
     channel_id As "channelId",
     sender_id As "senderId",
     receiver_id As "receiverId",
-    created_at As "createdAt"
+    created_at As "createdAt",
     updated_at As "updatedAt",
     conversation_id As "conversationId",
     user_id As "userId",
@@ -731,7 +731,7 @@ export const SubscriptionRequests = `
     id,
     user_id As "userId",
     creator_id As "creatorId",
-    created_at, As "createdAt",
+    created_at As "createdAt",
     updated_at As "updatedAt",  
     uuid
   `
@@ -754,7 +754,7 @@ export const SupportPayments = `
     support_id As "supportId",
     successful,
     error,
-    created_at, As "createdAt"
+    created_at As "createdAt",
     updated_at As "updatedAt",
     amount,
     tx_hash As "txHash"
@@ -782,8 +782,8 @@ export const Tiers = `
     user_id As "userId",
     amount,
     name,
-    created_at, As "createdAt"
-    updated_at As "updatedAt,"   
+    created_at As "createdAt",
+    updated_at As "updatedAt",
     description,
     title,
     currency,
@@ -796,7 +796,7 @@ export const TokenCredits = `
     amount,
     user_id As "userId",
     campaign_id As "campaignId",
-    created_at, As "createdAt",
+    created_at As "createdAt",
     updated_at As "updatedAt" 
 `
 
@@ -805,10 +805,9 @@ export const TransactionInputs = `
     address,
     value,
     transaction_id As "transactionId",
-    created_at, As "createdAt",
+    created_at As "createdAt",
     updated_at As "updatedAt",  
     amount_sat As "amountSat"
-
   `
 
 export const TransactionOutputs = `
@@ -826,12 +825,12 @@ export const Transactions = `
     id,
     user_id As "userId",
     tx_hash As "txHash",
-    created_at, As "createdAt"
+    created_at As "createdAt",
     updated_at As "updatedAt",
     confirmed,
-    subscription_id As "subscriptionId" ,
-    to,
-    from,
+    subscription_id As "subscriptionId",
+    "to",
+    "from",
     amount,
     amount_usd As "amountUsd",
     message,
@@ -853,7 +852,6 @@ export const Transactions = `
     outputs,
     fee_sat As "feeSat",
     btc_price As "btcPrice"
-
   `
 
 export const Unfollows = `
