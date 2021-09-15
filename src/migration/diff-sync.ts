@@ -327,8 +327,8 @@ async function migrateDataTables() {
   // /**
   // *          DATA SET - 4
   //  */
-  await insertData(Views, 'Views','views')
-  // await insertData(UrlMetadata,'UrlMetadata ,'url_metadata')
+//  await insertData(Views, 'Views','views')
+   await insertData(UrlMetadata,'UrlMetadata','url_metadata')
   // await insertData(ConversationUsers,'ConversationUsers ,'conversation_users')
   // await insertData(PostUploads, 'PostUploads',"post_uploads")
   // await insertData(Conversations,'Conversations', 'conversations')

@@ -328,31 +328,35 @@ async function migrateDataTables() {
     // /**
     // *          DATA SET - 4
     //  */
-    await insertData(Views, 'Views','views')
-    await insertData(UrlMetadata,'UrlMetadata' ,'url_metadata')
-    await insertData(ConversationUsers,'ConversationUsers' ,'conversation_users')
-    await insertData(PostUploads, 'PostUploads',"post_uploads")
-    await insertData(Conversations,'Conversations', 'conversations')
+    //    await insertData(Views, 'Views','views')
+    
+   try {
+    //await insertData(UrlMetadata,'UrlMetadata' ,'url_metadata')
+    // await insertData(ConversationUsers,'ConversationUsers' ,'conversation_users')
+    // await insertData(PostUploads, 'PostUploads',"post_uploads")
+    //await insertData(Conversations,'Conversations', 'conversations')
     await insertData(Metrics, 'Metrics','metrics')
     await insertData(Users, 'Users','users')
   
     // /**
     //  *          DATA SET - 5
     //  */
-    // await insertData(Messages, 'Messages', 'messages')
-    // await insertData(AdImpressions,'AdImpressions', 'ad_impressions')
-    // await insertData(AdminAlerts, 'AdminAlerts','admin_alerts')
-    // await insertData(Subscriptions, 'Subscriptions','subscriptions')
-    // await insertData(Likes, 'Likes','likes')
-    // await insertData(Notifications, 'Notifications','notifications')
-    // await insertData(Uploads,'Uploads' ,'uploads')
+     await insertData(Messages, 'Messages', 'messages')
+     await insertData(AdImpressions,'AdImpressions', 'ad_impressions')
+     await insertData(AdminAlerts, 'AdminAlerts','admin_alerts')
+     await insertData(Subscriptions, 'Subscriptions','subscriptions')
+     await insertData(Likes, 'Likes','likes')
+     await insertData(Notifications, 'Notifications','notifications')
+     await insertData(Uploads,'Uploads' ,'uploads')
   
     // /**
     //  *          DATA SET - 6
     //  */
-    // await insertData(Posts,'Posts', "posts")
+     await insertData(Posts,'Posts', "posts")
   
-
+   } catch (error) {
+     console.log("Error in catch part", error)
+   }
   console.log("Migration done successfully!")
 }
 
